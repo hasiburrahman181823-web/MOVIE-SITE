@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="night">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Movie Site — World-class cinema discovery and streaming platform featuring dual Day/Night bespoke UI/UX and 4K streaming.">
+  <title>Movie Site | World-Class 4K Cinema & Streaming</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Colorful Lighting Orbs & Texture -->
+  <div class="ambient-canvas">
+    <div class="ambient-glow ambient-glow-1"></div>
+    <div class="ambient-glow ambient-glow-2"></div>
+    <div class="ambient-glow ambient-glow-3"></div>
+  </div>
+  <div class="film-grain"></div>
+
+  <!-- Luxury Top Navigation -->
+  <header class="topbar" id="topbar">
+    <a href="#home" class="brand" aria-label="Movie Site Home">
+      <div class="brand-mark">MS</div>
+      <span class="brand-name">Movie <b>Site</b></span>
+      <span class="brand-badge">4K ULTRA</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#home" class="active">Home</a>
+      <a href="#trending">Trending</a>
+      <a href="#top-rated">Top Rated</a>
+      <a href="#catalog">Browse (50+ Titles)</a>
+      <a href="#watchlist">My List</a>
+      <a href="#vip">VIP Pass</a>
+      <a href="#admin" id="adminNavLink" hidden>Admin</a>
+    </nav>
+
+    <div class="header-controls">
+      <!-- Search Trigger -->
+      <button class="search-trigger" id="searchModalBtn" aria-label="Open Quick Search">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+        <span>Search 50+ movies...</span>
+        <kbd class="search-shortcut">⌘K</kbd>
+      </button>
+
+      <!-- UI Audio SFX Toggle -->
+      <button class="icon-btn" id="sfxToggle" title="Toggle Sound FX" aria-label="Toggle Sound Effects">
+        <svg id="sfxIconOn" viewBox="0 0 24 24">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+        <svg id="sfxIconOff" viewBox="0 0 24 24" style="display:none;">
+          <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+        </svg>
+      </button>
+
+      <!-- Day / Night Theme Switcher -->
+      <button class="icon-btn theme-toggle" id="themeToggle" title="Switch Theme (Day / Night)" aria-label="Toggle Theme">
+        <!-- Sun Icon (shown in night mode to switch to day) -->
+        <svg id="themeIconSun" viewBox="0 0 24 24">
+          <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+        </svg>
+        <!-- Moon Icon (shown in day mode to switch to night) -->
+        <svg id="themeIconMoon" viewBox="0 0 24 24" style="display:none;">
+          <path d="M12.3 2a10 10 0 0 0-1.9 19.8 10 10 0 0 0 11.6-11.6A10 10 0 0 0 12.3 2z"/>
+        </svg>
+      </button>
+
+      <!-- Auth / Profile Trigger -->
+      <button class="btn btn-primary" id="authBtn">Sign In</button>
+      <div id="userProfilePill" class="user-menu-btn" style="display:none;">
+        <img id="userAvatarImg" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100" class="user-avatar-sm" alt="User Avatar">
+        <span id="userNameText">My Profile</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dynamic Hero Spotlight Billboard -->
+  <section id="home" class="hero-billboard">
+    <div class="hero-backdrop-container">
+      <img id="heroBackdrop" class="hero-backdrop-img" src="" alt="Hero Backdrop">
+      <div class="hero-gradient-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-tags">
+        <span id="heroBadge" class="hero-badge">SPOTLIGHT</span>
+        <span id="heroQuality" class="hero-meta-pill">4K Ultra HD</span>
+        <span id="heroAge" class="hero-meta-pill">PG-13</span>
+        <span id="heroRating" class="hero-meta-pill imdb-pill">★ 9.2</span>
+        <span id="heroYear" class="hero-meta-pill">2025</span>
+        <span id="heroDuration" class="hero-meta-pill">2h 18m</span>
+      </div>
+
+      <h1 id="heroTitle" class="hero-title">Cyberpunk: Neon Genesis</h1>
+      <p id="heroDesc" class="hero-desc">
+        In a dystopian neo-Tokyo submerged in synthetic rain, an augmented runner unravels a rogue AI code capable of hijacking human consciousness.
+      </p>
+
+      <div class="hero-actions">
+        <button id="heroPlayBtn" class="btn btn-primary btn-lg">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          Watch Now
+        </button>
+        <button id="heroTrailerBtn" class="btn btn-glass btn-lg">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-8 12V8l6 4-6 4z"/>
+          </svg>
+          Trailer
+        </button>
+        <button id="heroWatchlistBtn" class="btn btn-glass btn-lg">
+          <span id="heroWatchlistIcon">＋</span> Add to List
+        </button>
+      </div>
+    </div>
+
+    <!-- Spotlight Mini Selector -->
+    <div class="hero-thumbnails" id="heroThumbnails"></div>
+  </section>
+
+  <main>
+    <!-- Section: Continue Watching -->
+    <section id="continueWatchingSection" class="section-wrapper" style="display:none;">
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">RESUME STREAMING</span>
+          <h2 class="section-title">Continue Watching</h2>
+          <p class="section-sub">Pick up right where you left off with synchronized playback</p>
+        </div>
+      </div>
+      <div class="rail-container" id="continueRail"></div>
+    </section>
+
+    <!-- Section: Trending Now (#1, #2, #3, ...) -->
+    <section id="trending" class="section-wrapper">
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">GLOBAL CHARTS</span>
+          <h2 class="section-title">Trending Top 10</h2>
+          <p class="section-sub">The most streamed movies on Movie Site right now</p>
+        </div>
+      </div>
+      <div class="rail-container" id="trendingRail">
+        <!-- Ranked cards dynamically rendered -->
+      </div>
+    </section>
+
+    <!-- Section: Top Rated & Critics' Choice -->
+    <section id="top-rated" class="section-wrapper">
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">ACCLAIMED CINEMA</span>
+          <h2 class="section-title">Top Rated Masterpieces</h2>
+          <p class="section-sub">Highest rated cinema by critics and cinephiles worldwide</p>
+        </div>
+      </div>
+      <div class="rail-container" id="topRatedRail"></div>
+    </section>
+
+    <!-- VIP Membership Strip -->
+    <section id="vip" class="vip-strip">
+      <div class="vip-content">
+        <h3>Unlock Movie Site VIP Ultra</h3>
+        <p>Experience true cinematic perfection with uncompressed 4K HDR streams, Dolby Atmos spatial audio, offline downloads, and early access to world premieres.</p>
+        <div class="vip-perks">
+          <span>✦ 4K Ultra HD & Dolby Vision</span>
+          <span>✦ Dolby Atmos 7.1 Surround</span>
+          <span>✦ 50+ Exclusive Titles</span>
+          <span>✦ High-Speed Offline Downloads</span>
+        </div>
+      </div>
+      <button class="btn btn-gold btn-lg" id="vipUpgradeBtn">Activate VIP Pass</button>
+    </section>
+
+    <!-- Section: Catalog & Filter Explorer -->
+    <section id="catalog" class="section-wrapper">
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">EXPLORE CINEMA</span>
+          <h2 class="section-title">Complete 50+ Movie Library</h2>
+          <p class="section-sub">Filter by genre, sort by rating, and discover unforgettable stories</p>
+        </div>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <div class="genre-chips" id="genreChips">
+          <button class="chip active" data-genre="All">All Genres (50)</button>
+          <button class="chip" data-genre="Sci-Fi">Sci-Fi</button>
+          <button class="chip" data-genre="Action">Action</button>
+          <button class="chip" data-genre="Thriller">Thriller</button>
+          <button class="chip" data-genre="Animation">Animation</button>
+          <button class="chip" data-genre="Crime">Crime</button>
+          <button class="chip" data-genre="Fantasy">Fantasy</button>
+          <button class="chip" data-genre="Horror">Horror</button>
+          <button class="chip" data-genre="Comedy">Comedy</button>
+          <button class="chip" data-genre="Romance">Romance</button>
+          <button class="chip" data-genre="Drama">Drama</button>
+          <button class="chip" data-genre="Adventure">Adventure</button>
+          <button class="chip" data-genre="Mystery">Mystery</button>
+          <button class="chip" data-genre="Documentary">Documentary</button>
+        </div>
+
+        <div class="filter-dropdowns">
+          <select class="select-input" id="sortSelect" aria-label="Sort movies by">
+            <option value="default">Sort: Default</option>
+            <option value="rating">Top Rated (IMDb)</option>
+            <option value="views">Most Popular</option>
+            <option value="year">Newest First</option>
+            <option value="title">A - Z</option>
+          </select>
+
+          <select class="select-input" id="qualitySelect" aria-label="Filter by quality">
+            <option value="">Quality: All</option>
+            <option value="4K">4K Ultra HD</option>
+            <option value="1080p">1080p FHD</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- All Movies Grid -->
+      <div class="movie-grid" id="moviesGrid">
+        <div class="skeleton" style="height: 380px;"></div>
+        <div class="skeleton" style="height: 380px;"></div>
+        <div class="skeleton" style="height: 380px;"></div>
+        <div class="skeleton" style="height: 380px;"></div>
+      </div>
+    </section>
+
+    <!-- Section: My Watchlist -->
+    <section id="watchlist" class="section-wrapper">
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">PERSONAL COLLECTION</span>
+          <h2 class="section-title">My Watchlist</h2>
+          <p class="section-sub">Titles you've saved to watch whenever you're ready</p>
+        </div>
+      </div>
+      <div class="movie-grid" id="watchlistGrid">
+        <p class="empty-state" style="grid-column: 1/-1; padding: 40px 0; color: var(--text-muted);">
+          Sign in to curate your personal watchlist.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section: Admin Command Center (Hidden unless admin) -->
+    <section id="admin" class="section-wrapper admin-section" hidden>
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">COMMAND CENTER</span>
+          <h2 class="section-title">Admin Dashboard</h2>
+          <p class="section-sub">Manage platform library, view real-time stats and users</p>
+        </div>
+        <button id="adminRefreshBtn" class="btn btn-glass">Refresh Stats</button>
+      </div>
+
+      <div class="stats-grid" id="adminStatsGrid"></div>
+
+      <div class="admin-columns">
+        <!-- Movie Upload / Edit Form -->
+        <div class="admin-box">
+          <h3 id="adminFormTitle" style="margin-bottom: 16px;">Add New Title</h3>
+          <form id="adminMovieForm" enctype="multipart/form-data">
+            <input class="text-input" name="title" placeholder="Movie Title" required style="margin-bottom: 10px;">
+            <textarea class="textarea-input" name="description" placeholder="Synopsis & Plot description" style="margin-bottom: 10px;"></textarea>
+            
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+              <input class="text-input" name="genre" placeholder="Genre (e.g. Sci-Fi, Action)" value="Sci-Fi">
+              <input class="text-input" name="year" type="number" placeholder="Year" value="2025">
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+              <input class="text-input" name="duration" placeholder="Duration (e.g. 2h 15m)" value="2h 10m">
+              <input class="text-input" name="imdb_rating" type="number" step="0.1" placeholder="IMDb Rating (e.g. 8.9)" value="8.8">
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+              <input class="text-input" name="director" placeholder="Director name">
+              <input class="text-input" name="badge" placeholder="Badge (e.g. Trending #1)">
+            </div>
+
+            <input class="text-input" name="cast" placeholder="Starring Cast (comma separated)" style="margin-bottom: 10px;">
+            <input class="text-input" name="poster_url" placeholder="Poster Image URL" style="margin-bottom: 10px;">
+            <input class="text-input" name="backdrop_url" placeholder="Backdrop Banner URL" style="margin-bottom: 10px;">
+            <input class="text-input" name="video_url" placeholder="Video Stream URL (MP4 / WebM)" style="margin-bottom: 10px;">
+
+            <div style="margin: 10px 0;">
+              <label style="display:block; font-size: 12px; margin-bottom: 4px; color: var(--text-dim);">Or Upload Local Video File:</label>
+              <input type="file" name="video" accept="video/*" class="text-input">
+            </div>
+
+            <div style="display:flex; gap: 10px; margin-top: 18px;">
+              <button class="btn btn-primary" type="submit" id="saveMovieBtn">Save Movie</button>
+              <button class="btn btn-glass" type="button" id="cancelEditBtn">Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Library & Users List -->
+        <div class="admin-box">
+          <h3 style="margin-bottom: 16px;">Platform Library</h3>
+          <div id="adminMoviesList" style="max-height: 400px; overflow-y: auto; margin-bottom: 24px;"></div>
+
+          <h3 style="margin-bottom: 16px;">Registered Users</h3>
+          <div id="adminUsersList" style="max-height: 250px; overflow-y: auto;"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Luxury Footer -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-info">
+        <a href="#home" class="brand">
+          <div class="brand-mark">MS</div>
+          <span class="brand-name">Movie <b>Site</b></span>
+        </a>
+        <p>A mastercrafted digital sanctuary for authentic cinema lovers. Engineered with high-fidelity streams, vibrant Day/Night aesthetics, and 50+ blockbuster titles.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="#home">Spotlight</a>
+        <a href="#trending">Trending Top 10</a>
+        <a href="#top-rated">Top Rated</a>
+        <a href="#catalog">Browse (50+ Titles)</a>
+        <a href="#watchlist">My Watchlist</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Experience</h4>
+        <a href="#vip">VIP 4K Ultra Pass</a>
+        <a href="#" onclick="toggleTheme(); return false;">Switch Day/Night</a>
+        <a href="#" onclick="toggleSfx(); return false;">Sound Effects</a>
+        <a href="#admin">Admin Center</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Specifications</h4>
+        <a href="#">4K UHD & HDR10+</a>
+        <a href="#">Dolby Atmos Spatial</a>
+        <a href="#">50+ Curated Titles</a>
+        <a href="#">Zero Data Loss Guarantee</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="currentYear"></span> Movie Site. Handcrafted with obsession.</span>
+      <span>Engineered with Node.js, SQLite & Vanilla Web Components</span>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       MODALS
+       ======================================================================== -->
+
+  <!-- Cinema Movie Details & Player Modal -->
+  <div class="modal-backdrop" id="movieDetailsModal">
+    <div class="cinema-modal-card">
+      <button class="modal-close-btn" id="closeMovieBtn" aria-label="Close modal">✕</button>
+      
+      <!-- Video Player with Ambient Glow -->
+      <div class="player-ambient-wrap">
+        <div class="player-ambient-glow" id="playerAmbientGlow"></div>
+        <video id="cinemaVideo" class="video-element" controls playsinline></video>
+      </div>
+
+      <!-- Content Info -->
+      <div class="modal-body-content">
+        <div class="modal-meta-row">
+          <span id="modalQuality" class="badge-pill badge-quality">4K Ultra HD</span>
+          <span id="modalRating" class="badge-pill imdb-pill">★ 9.0</span>
+          <span id="modalAge" class="hero-meta-pill">PG-13</span>
+          <span id="modalYear" class="hero-meta-pill">2025</span>
+          <span id="modalDuration" class="hero-meta-pill">2h 15m</span>
+          <span id="modalGenre" class="hero-meta-pill">Sci-Fi</span>
+        </div>
+
+        <h2 id="modalTitle" class="modal-title">Movie Title</h2>
+        <p id="modalDescription" class="modal-synopsis">Full synopsis will appear here.</p>
+
+        <!-- Director, Cast & Specs -->
+        <div class="movie-specs-grid">
+          <div class="spec-item">
+            <small>Director</small>
+            <span id="modalDirector">Christopher Nolan</span>
+          </div>
+          <div class="spec-item">
+            <small>Starring Cast</small>
+            <span id="modalCast">Actor A, Actor B, Actor C</span>
+          </div>
+          <div class="spec-item">
+            <small>Audio Experience</small>
+            <span>Dolby Atmos 7.1 TrueHD</span>
+          </div>
+          <div class="spec-item">
+            <small>Streams Count</small>
+            <span id="modalViews">24,500 views</span>
+          </div>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="modal-actions-bar">
+          <button id="modalPlayBtn" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            Play Stream
+          </button>
+          <button id="modalWatchlistBtn" class="btn btn-glass">
+            <span id="modalWatchlistIcon">＋</span> My List
+          </button>
+          <button id="modalShareBtn" class="btn btn-glass">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/>
+            </svg>
+            Share Link
+          </button>
+        </div>
+
+        <!-- Simulated High-Speed Downloads -->
+        <div class="download-section">
+          <h4 style="font-size: 14px; font-weight: 700; margin-bottom: 6px;">Offline Ultra Download</h4>
+          <p style="font-size: 12px; color: var(--text-muted);">Save directly to your local cache for uninterrupted offline viewing:</p>
+          <div class="download-options">
+            <button class="download-chip" onclick="simulateDownload('4K Ultra HD (4.8 GB)')">
+              📥 4K HDR (4.8 GB)
+            </button>
+            <button class="download-chip" onclick="simulateDownload('1080p FHD (1.9 GB)')">
+              📥 1080p FHD (1.9 GB)
+            </button>
+            <button class="download-chip" onclick="simulateDownload('720p Mobile (850 MB)')">
+              📥 720p Mobile (850 MB)
+            </button>
+          </div>
+          <div class="download-progress-bar" id="downloadProgress">
+            <div class="download-progress-fill" id="downloadProgressFill"></div>
+          </div>
+        </div>
+
+        <!-- Community Reviews & 5-Star Rating -->
+        <div class="reviews-container">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <h3 style="font-size: 18px; font-weight: 800;">Community Reviews & Ratings</h3>
+            <span id="reviewSummaryBadge" style="font-size: 13px; font-weight: 700; color: var(--neon-amber);">★ 5.0 (0 reviews)</span>
+          </div>
+
+          <!-- Review Form -->
+          <form id="reviewForm" class="review-form">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 13px; font-weight: 700; color: var(--text-dim);">Your Rating:</span>
+              <div class="star-rating-select" id="starPicker">
+                <span data-val="1">★</span>
+                <span data-val="2">★</span>
+                <span data-val="3">★</span>
+                <span data-val="4">★</span>
+                <span data-val="5" class="active">★</span>
+              </div>
+            </div>
+            <textarea id="reviewTextInput" class="textarea-input" placeholder="Share your thoughts about this movie..."></textarea>
+            <button class="btn btn-primary" type="submit" style="justify-self: start;">Post Review</button>
+          </form>
+
+          <!-- Reviews Feed -->
+          <div class="reviews-list" id="reviewsList">
+            <p style="font-size: 13px; color: var(--text-dim);">Loading reviews...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Quick Search Modal (Ctrl + K) -->
+  <div class="modal-backdrop" id="searchModal">
+    <div class="search-modal-card">
+      <div class="search-input-wrap">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+        <input type="text" id="liveSearchInput" class="live-search-input" placeholder="Type title, actor, director or genre across 50+ movies..." autocomplete="off">
+        <button class="modal-close-btn" style="position: static;" id="closeSearchBtn" aria-label="Close search">✕</button>
+      </div>
+      <div class="search-results-list" id="searchResultsList">
+        <p style="padding: 20px; text-align: center; color: var(--text-dim); font-size: 13px;">
+          Type anything to discover movies across our entire 50-movie 4K library.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auth & User Profile Drawer / Modal -->
+  <div class="modal-backdrop" id="authModal">
+    <div class="cinema-modal-card auth-card">
+      <button class="modal-close-btn" id="closeAuthBtn" aria-label="Close modal">✕</button>
+      
+      <a href="#" class="brand auth-brand">
+        <div class="brand-mark">MS</div>
+        <span class="brand-name">Movie <b>Site</b></span>
+      </a>
+
+      <!-- Logged-in Profile View -->
+      <div id="profileView" style="display:none;">
+        <img id="profileAvatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; border: 2px solid var(--primary);" alt="Profile Avatar">
+        <h2 id="profileName" style="font-size: 20px; font-weight: 800; margin-bottom: 4px;">User Name</h2>
+        <p id="profileEmail" style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">user@example.com</p>
+        <span id="profilePlanBadge" class="hero-badge hero-badge-gold" style="font-size: 11px;">VIP 4K ULTRA MEMBER</span>
+
+        <div class="profile-stat-box">
+          <div class="stat-pill">
+            <b id="profileWatchlistCount">0</b>
+            <small>Saved in List</small>
+          </div>
+          <div class="stat-pill">
+            <b id="profileReviewsCount">VIP</b>
+            <small>Account Tier</small>
+          </div>
+        </div>
+
+        <button class="btn btn-glass full" id="logoutBtn" style="width: 100%; margin-top: 14px;">Sign Out</button>
+      </div>
+
+      <!-- Guest Login / Register View -->
+      <div id="authView">
+        <h2 id="authModalTitle" style="font-size: 22px; font-weight: 800; margin-bottom: 8px;">Welcome to Movie Site</h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Access your personalized streaming experience</p>
+
+        <!-- 1-Click Demo VIP Login Button -->
+        <button class="demo-quick-login-btn" id="quickDemoLoginBtn">
+          ⚡ Instant Demo VIP Sign-In
+        </button>
+
+        <div class="auth-divider">OR SIGN IN WITH CREDENTIALS</div>
+
+        <form id="authForm" style="display: grid; gap: 12px; text-align: left;">
+          <div id="authNameGroup" style="display: none;">
+            <label style="font-size: 12px; color: var(--text-dim); display: block; margin-bottom: 4px;">Full Name</label>
+            <input class="text-input" name="name" placeholder="John Doe">
+          </div>
+
+          <div>
+            <label style="font-size: 12px; color: var(--text-dim); display: block; margin-bottom: 4px;">Email Address</label>
+            <input class="text-input" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+
+          <div>
+            <label style="font-size: 12px; color: var(--text-dim); display: block; margin-bottom: 4px;">Password</label>
+            <input class="text-input" name="password" type="password" placeholder="••••••••" required>
+          </div>
+
+          <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 8px;" id="authSubmitBtn">
+            Continue to Movie Site
+          </button>
+        </form>
+
+        <button id="switchAuthModeBtn" style="background: none; border: none; color: var(--primary); font-size: 13px; font-weight: 700; cursor: pointer; margin-top: 20px;">
+          Don't have an account? Create one
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Toast -->
+  <div id="toast">
+    <span id="toastIcon">✦</span>
+    <span id="toastMsg">Welcome to Movie Site</span>
+  </div>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
